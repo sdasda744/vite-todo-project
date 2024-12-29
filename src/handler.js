@@ -89,6 +89,17 @@ export const displayIconsHoverHandler = (task, checkbox) => {
         displayIcons.classList.add("opacity-0");
     };
 
+    // Mobile touch
+    const handleTouchStart = () => {
+        displayIcons.classList.add("duration-300", "opacity-100");
+    };
+
+    // Mobile touch
+    const handleTouchEnd = () => {
+        displayIcons.classList.add("duration-300");
+        displayIcons.classList.remove("opacity-100");
+    };
+
     task.addEventListener("mouseover", () => {
         if (!checkbox.checked) {
             handleMouseOver();
@@ -100,6 +111,18 @@ export const displayIconsHoverHandler = (task, checkbox) => {
             handleMouseLeave();
         }
     });
+
+    task.addEventListener("touchstart", () => {
+        if (!checkbox.checked) {
+            handleTouchEnd();
+        }
+    })
+
+    task.addEventListener("touchstart", () => {
+        if (!checkbox.checked) {
+            handleTouchStart();
+        }
+    })
 };
 
 // Edit task
